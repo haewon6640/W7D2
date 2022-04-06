@@ -1,0 +1,5 @@
+<% @bands.each do |band| %>
+    <%= render 'band', band: band %>
+<% end %>
+
+<a href="<%= new_band_url%>"> Create a new band! </a>

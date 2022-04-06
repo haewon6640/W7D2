@@ -10,6 +10,25 @@
   </head>
 
   <body>
+    <nav>
+      <div class="nav-container">
+        <h1> Music App </h1>
+        <div class="container">
+          <% if logged_in? %>
+            <p> Welcome, <%= current_user.email %></p>
+            <form action="<%= session_url %>" method="POST">
+              <%= auth_token %>
+              <input type="hidden" name="_method" value="delete">
+              <input id="submit" type="submit" value="logout!">
+            </form>
+          <% else %>
+            <a href="<%= new_user_url%>">Create a New User</a>
+            <a href="<%= new_session_url %>">Login</a>
+        <% end %>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
+    <p><%= flash[:errors] %></p>
   </body>
 </html>
